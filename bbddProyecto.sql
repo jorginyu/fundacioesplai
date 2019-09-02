@@ -1,10 +1,8 @@
-CREATE DATABASE  IF NOT EXISTS `academia` /*!40100 DEFAULT CHARACTER SET utf8 */;
-USE `academia`;
 -- MySQL dump 10.13  Distrib 5.7.17, for Win64 (x86_64)
 --
--- Host: localhost    Database: academia
+-- Host: 127.0.0.1    Database: academia
 -- ------------------------------------------------------
--- Server version	5.7.21-log
+-- Server version	5.5.5-10.4.6-MariaDB
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -37,15 +35,6 @@ CREATE TABLE `comentario` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `comentario`
---
-
-LOCK TABLES `comentario` WRITE;
-/*!40000 ALTER TABLE `comentario` DISABLE KEYS */;
-/*!40000 ALTER TABLE `comentario` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `like`
 --
 
@@ -55,7 +44,7 @@ DROP TABLE IF EXISTS `like`;
 CREATE TABLE `like` (
   `idLike` int(11) NOT NULL,
   `Likecol` tinyint(4) DEFAULT NULL,
-  `fecha` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `fecha` timestamp NULL DEFAULT current_timestamp(),
   `Usuario_idUsuario` int(11) NOT NULL,
   `Publicacion_idPublicacion` int(11) NOT NULL,
   `Publicacion_Usuario_idUsuario` int(11) NOT NULL,
@@ -64,15 +53,6 @@ CREATE TABLE `like` (
   CONSTRAINT `fk_Like_Usuario1` FOREIGN KEY (`Usuario_idUsuario`) REFERENCES `usuario` (`idUsuario`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `like`
---
-
-LOCK TABLES `like` WRITE;
-/*!40000 ALTER TABLE `like` DISABLE KEYS */;
-/*!40000 ALTER TABLE `like` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `publicacion`
@@ -86,22 +66,13 @@ CREATE TABLE `publicacion` (
   `ubicacion` varchar(45) DEFAULT NULL,
   `nombre` varchar(45) DEFAULT NULL,
   `precio` varchar(45) DEFAULT NULL,
-  `info` text,
+  `info` text DEFAULT NULL,
   `Usuario_idUsuario` int(11) NOT NULL,
   PRIMARY KEY (`idPublicacion`,`Usuario_idUsuario`),
   KEY `fk_Publicacion_Usuario1_idx` (`Usuario_idUsuario`),
   CONSTRAINT `fk_Publicacion_Usuario1` FOREIGN KEY (`Usuario_idUsuario`) REFERENCES `usuario` (`idUsuario`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `publicacion`
---
-
-LOCK TABLES `publicacion` WRITE;
-/*!40000 ALTER TABLE `publicacion` DISABLE KEYS */;
-/*!40000 ALTER TABLE `publicacion` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `puntuacion`
@@ -123,15 +94,6 @@ CREATE TABLE `puntuacion` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `puntuacion`
---
-
-LOCK TABLES `puntuacion` WRITE;
-/*!40000 ALTER TABLE `puntuacion` DISABLE KEYS */;
-/*!40000 ALTER TABLE `puntuacion` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `usuario`
 --
 
@@ -150,18 +112,10 @@ CREATE TABLE `usuario` (
   `instagram` varchar(45) DEFAULT NULL,
   `skype` varchar(45) DEFAULT NULL,
   `disponibilidad` varchar(45) DEFAULT NULL,
+  `tipo` int(1) NOT NULL,
   PRIMARY KEY (`idUsuario`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `usuario`
---
-
-LOCK TABLES `usuario` WRITE;
-/*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
-/*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
-UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -172,4 +126,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-08-30  9:24:52
+-- Dump completed on 2019-09-02 13:33:52
