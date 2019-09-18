@@ -18,6 +18,33 @@ USE `academia`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `publicacion`
+--
+
+DROP TABLE IF EXISTS `publicacion`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `publicacion` (
+  `idPublicacion` int(11) NOT NULL AUTO_INCREMENT,
+  `nombre_ES` varchar(45) NOT NULL,
+  `nombre_EN` varchar(45) NOT NULL,
+  `nombre_CH` varchar(45) NOT NULL,
+  `precio` varchar(45) DEFAULT NULL,
+  `Usuario_idUsuario` int(11) DEFAULT NULL,
+  `img` text DEFAULT NULL,
+  `ubicacion_latitud` text DEFAULT NULL,
+  `ubicacion_longitud` text DEFAULT NULL,
+  `Info_ES` text DEFAULT NULL,
+  `info_EN` text DEFAULT NULL,
+  `Info_CH` text DEFAULT NULL,
+  `publicacioncol` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`idPublicacion`),
+  KEY `fk_Publicacion_Usuario1_idx` (`Usuario_idUsuario`),
+  CONSTRAINT `fk_Publicacion_Usuario1` FOREIGN KEY (`Usuario_idUsuario`) REFERENCES `usuario` (`idUsuario`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
 -- Dumping data for table `publicacion`
 --
 
@@ -36,4 +63,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-09-18  9:20:33
+-- Dump completed on 2019-09-18  9:45:38
