@@ -1,8 +1,13 @@
 import React from "react";
-import Mapa from './Mapa';
+import { Container } from 'reactstrap';
+
+import Menu from './Menu';
+import Register from './Register';
+import Cursos from './Cursos';
 
 export default () => (
   <div>
-    <Mapa />
+    <Register />
+    <Container></Container>
   </div>
 );

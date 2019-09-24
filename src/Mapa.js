@@ -4,16 +4,19 @@ import {
   withGoogleMap,
   GoogleMap,
   Marker
-} from 'react-google-maps';
+} from 'google-map-react';
+import Cursos from './Cursos';
 
-    const APIKEY = "xxx";
+    const APIKEY = 'AIzaSyAjSykSOjdWcC7gwqp1h5sqvDnFkZr1swc';
       
 
 const MiMapa = withScriptjs(
   withGoogleMap(props => (
-    <GoogleMap defaultZoom={8} defaultCenter={{ lat: -34.397, lng: 150.644 }}>
+    <GoogleMap defaultZoom={18} defaultCenter={{ lat: 41.5421104, lng: 2.4445 }}>
       {props.isMarkerShown && (
-        <Marker position={{ lat: -34.397, lng: 150.644 }} />
+        <Marker>
+          <Cursos position={{ lat: 41.5421104, lng: 2.4445 }} />
+        </Marker>
       )}
     </GoogleMap>
   ))
@@ -21,17 +24,8 @@ const MiMapa = withScriptjs(
 
 
 class Mapa extends React.Component {
-  constructor(props) {
-    super(props);
-    this.maps= this.maps.bind(this);
-  }
-
-  maps() {
-
-  }
-
+  
   render() {
-
 
     return (
       <div>
@@ -41,6 +35,7 @@ class Mapa extends React.Component {
           loadingElement={<div style={{ height: `100%` }} />}
           containerElement={<div style={{ height: `400px` }} />}
           mapElement={<div style={{ height: `100%` }} />}
+          id="map"
         />
       </div>
     );
